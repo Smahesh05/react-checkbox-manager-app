@@ -60,7 +60,18 @@ const CheckedBox = () => {
       });
       allCheckboxes.push(appObj);
     });
-    console.log(allCheckboxes);
+
+    let finalArr = allCheckboxes.filter((appObj) => {
+      let arr = appObj.modules.filter(
+        (moduleObj) => moduleObj.checked === true
+      );
+      if (arr.length != 0) {
+        appObj.modules = arr;
+        return appObj;
+      }
+    });
+
+    console.log(finalArr);
   };
 
   useEffect((e) => {
